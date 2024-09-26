@@ -1,41 +1,75 @@
+"use client"; // Ensure the entire file is client-rendered for animations
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function HomePage() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  // Hero Section staggered animation variants
+  const heroVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.2,
+        duration: 0.8,
+        ease: [0.4, 0.0, 0.2, 1],
+      },
+    },
+  };
+
+  // Items inside hero (e.g., title, buttons) 
+  const heroItemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.4, 0.0, 0.2, 1],
+      },
+    },
+  };
+
+  // Artist Section scroll-triggered animation variants
+  const artistItemVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Header */}
-      <header className=" text-black border-b-zinc-100   border-b-2 p-4">
-        <nav className="container mx-auto flex justify-between  items-center">
-          <Image
-            src="/img/logo.webp"
-            alt="Logo"
-            width={64}
-            height={64}
-            quality={100}
-            className="py-3 px-1 rounded-md bg-ampyellow-300"
-          />
-          <div className="hidden md:flex font-medium space-x-4">
-            <Link href="#" className="hover:underline">
-              Artistas
-            </Link>
-            <Link href="#" className="hover:underline">
-              Eventos
-            </Link>
-            <Link href="#" className="hover:underline">
-              Contato
-            </Link>
+      <header className="fixed flex px-6 top-0 left-0 w-full bg-zinc-600/30 backdrop-blur-[6px] z-50 h-[64px] text-black border-b-zinc-500 border-b-[1px]">
+        <nav className="container mx-auto flex justify-between items-center">
+          <h4 className="font-[750] tracking-wider text-zinc-50">AMPLITUDE A</h4>
+          <div className="hidden text-zinc-50 md:flex font-medium space-x-4">
+            <Link href="#" className="hover:underline font-light">Artistas</Link>
+            <Link href="#" className="hover:underline font-light">Eventos</Link>
+            <Link href="#" className="hover:underline font-light">Contato</Link>
           </div>
           <Button className="md:hidden">Menu</Button>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section className="relative text-zinc-900 py-20">
-        {/* Vídeo de Fundo */}
+      <section className="relative text-zinc-900 pt-[144px] pb-20">
+        {/* Video Background */}
         <div className="video-background w-full h-full z-[10]"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-black z-[5] opacity-30 sm:opacity-70"></div>
 
@@ -43,49 +77,65 @@ export default function HomePage() {
           className="absolute top-0 left-0 w-full h-full object-cover hero-video"
           src="/vid/hero.webm"
           autoPlay
+          preload="auto"
           loop
           muted
           playsInline
         />
 
-        <div className="container relative z-10 mx-auto px-6 sm:px-0 flex flex-col items-center justify-between">
-          <div className="flex flex-col gap-24">
-            <div>
-              <div className="text-start">
-                <h1 className="text-4xl md:text-5xl font-medium text-zinc-100 max-w-[640px]">
-                  Transformamos ideias em experiências inesquecíveis.
-                </h1>
-                <p className="py-6 lg:max-w-[560px] font-light text-zinc-200">
-                  Na Amplitude A, unimos produção de eventos e comunicação
-                  estratégica para emocionar e conectar pessoas.
-                </p>
-              </div>
-              <div className="flex md:flex-row  flex-col gap-2">
-                <Button
-                  variant="default"
-                  className="bg-amppurple-500 hover:bg-amppurple-500 active:bg-amppurple-400 rounded-xl font-normal py-6 px-8"
-                >
-                  Quero um evento
-                </Button>
-                <Button
-                  variant="outline"
-                  className="  active:bg-zinc-200 rounded-xl py-6 px-8 font-normal"
-                >
-                  Sou um artista
-                </Button>
-              </div>
+        {/* Hero Section Animated Content */}
+        <motion.div 
+          className="container relative z-10 mx-auto px-6 sm:px-0 flex flex-col items-center justify-between"
+          initial="hidden"
+          animate="visible"
+          variants={heroVariants}
+        >
+          {/* Title and Text */}
+          <div className="flex flex-col sm:gap-0 gap-24">
+            <div className="text-start">
+              <motion.h1
+                className="text-4xl md:text-6xl font-medium text-zinc-100 max-w-[640px]"
+                variants={heroItemVariants}
+              >
+                Transformamos ideias em experiências inesquecíveis.
+              </motion.h1>
+              <motion.p
+                className="py-6 lg:max-w-[768px] sm:text-lg font-light text-zinc-200"
+                variants={heroItemVariants}
+              >
+                Na Amplitude A, unimos produção de eventos e comunicação estratégica para emocionar e conectar pessoas.
+              </motion.p>
             </div>
-            <div className="flex flex-col gap-4 w-full pt-16">
-              <iframe
-                className="max-w-[840px] "
-                src="https://open.spotify.com/embed/playlist/04hXF6sz77Na3WsOIkBj3Y?utm_source=generator&theme=0"
-                height="360"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-              ></iframe>
-            </div>
+
+            {/* Buttons */}
+            <motion.div className="flex md:flex-row flex-col gap-2" variants={heroItemVariants}>
+              <Button
+                variant="default"
+                className="bg-amppurple-500 hover:bg-amppurple-500 active:bg-amppurple-400 rounded-xl font-normal py-6 px-8"
+              >
+                Quero um evento
+              </Button>
+              <Button
+                variant="outline"
+                className="active:bg-zinc-200 rounded-xl py-6 px-8 font-normal"
+              >
+                Sou um artista
+              </Button>
+            </motion.div>
           </div>
-        </div>
+
+          {/* Spotify iframe */}
+          <motion.div className="flex flex-col gap-4 w-full max-w-[768px] pt-16" variants={heroItemVariants}>
+            <p className="text-zinc-50">Ouça nossos artistas</p>
+            <iframe
+              className="max-w-[840px]"
+              src="https://open.spotify.com/embed/playlist/04hXF6sz77Na3WsOIkBj3Y?utm_source=generator&theme=0"
+              height="360"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Artists Section */}
@@ -102,7 +152,13 @@ export default function HomePage() {
               "Soul Livre",
             ].map((artist) => (
               <div key={artist} className="text-center">
-                <div className="w-24 h-24 mx-auto bg-gray-300 rounded-md mb-4"></div>
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.75 }}
+                  variants={artistItemVariants}
+                  className="w-24 h-24 mx-auto bg-gray-300 rounded-md mb-4"
+                />
                 <p>{artist}</p>
               </div>
             ))}
@@ -110,28 +166,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Artist */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/3 mb-8 md:mb-0">
-            <Image
-              src="/placeholder.svg"
+      {/* Featured Artist Section */}
+      <motion.section
+        ref={ref}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={heroVariants}
+        className="py-16 bg-white "
+      >
+        <div className="container mx-auto px-4 flex flex-col md:flex-row max-w-[800px] justify-center items-center">
+          <div className="md:w-1/3 mb-8 md:mb-0 ">
+            <motion.img
+              src="/img/home/soullivre.jpg"
               alt="Featured Artist"
-              width={300}
-              height={300}
-              className="rounded-full"
+              width={480}
+              height={480}
+              className="rounded-xl "
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.75 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             />
           </div>
           <div className="md:w-2/3 md:pl-8">
-            <h2 className="text-3xl font-bold mb-4">Soul Livre</h2>
-            <p className="mb-4">
-              Formado por cinco integrantes, o Soul Livre é uma banda de música
-              cristã contemporânea...
-            </p>
-            <Button>Quero Contratar</Button>
+            <motion.h2
+              className="text-3xl font-bold mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.75 }}
+              transition={{ duration: 0.6 }}
+            >
+              Soul Livre
+            </motion.h2>
+            <motion.p
+              className="mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.75 }}
+              transition={{ duration: 0.6 }}
+            >
+              Formado por cinco integrantes, o Soul Livre é uma banda de música cristã contemporânea...
+            </motion.p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Events Section */}
       <section className="py-16 bg-gray-100">
@@ -174,15 +252,30 @@ export default function HomePage() {
             </h2>
             <form className="space-y-4">
               <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="picture" className="text-xs font-regular text-zinc-500">Nome</Label>
+                <Label
+                  htmlFor="picture"
+                  className="text-xs font-regular text-zinc-500"
+                >
+                  Nome
+                </Label>
                 <Input />
               </div>
               <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="picture" className="text-xs font-regular text-zinc-500">Telefone</Label>
+                <Label
+                  htmlFor="picture"
+                  className="text-xs font-regular text-zinc-500"
+                >
+                  Telefone
+                </Label>
                 <Input />
               </div>
               <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="picture" className="text-xs font-regular text-zinc-500">E-mail</Label>
+                <Label
+                  htmlFor="picture"
+                  className="text-xs font-regular text-zinc-500"
+                >
+                  E-mail
+                </Label>
                 <Input />
               </div>
               {/* <div className="flex items-center space-x-4">

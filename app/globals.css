@@ -21,10 +21,11 @@ h1,h2,h3,h4{
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+
   background-image: radial-gradient(rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 1) 1px);
   background-size: 3px 3px;
 }
+
 
 @layer utilities {
   .text-balance {
