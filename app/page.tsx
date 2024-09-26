@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function HomePage() {
   return (
@@ -36,8 +37,8 @@ export default function HomePage() {
       <section className="relative text-zinc-900 py-20">
         {/* Vídeo de Fundo */}
         <div className="video-background w-full h-full z-[10]"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-black z-[5] opacity-30 sm:opacity-60"></div>
-        
+        <div className="absolute top-0 left-0 w-full h-full bg-black z-[5] opacity-30 sm:opacity-70"></div>
+
         <video
           className="absolute top-0 left-0 w-full h-full object-cover hero-video"
           src="/vid/hero.webm"
@@ -47,14 +48,17 @@ export default function HomePage() {
           playsInline
         />
 
-        <div className="container relative z-10 mx-auto px-6 sm:px-0 flex flex-col items-start justify-between">
+        <div className="container relative z-10 mx-auto px-6 sm:px-0 flex flex-col items-center justify-between">
           <div className="flex flex-col gap-24">
             <div>
               <div className="text-start">
-                <h1 className="text-4xl md:text-5xl font-medium text-zinc-100 max-w-[640px] mb-4 ">
+                <h1 className="text-4xl md:text-5xl font-medium text-zinc-100 max-w-[640px]">
                   Transformamos ideias em experiências inesquecíveis.
                 </h1>
-                <p className="text-xl mb-8"></p>
+                <p className="py-6 lg:max-w-[560px] font-light text-zinc-200">
+                  Na Amplitude A, unimos produção de eventos e comunicação
+                  estratégica para emocionar e conectar pessoas.
+                </p>
               </div>
               <div className="flex md:flex-row  flex-col gap-2">
                 <Button
@@ -69,22 +73,17 @@ export default function HomePage() {
                 >
                   Sou um artista
                 </Button>
-                <p className="sm:pl-4 sm:pt-0 pt-6 lg:max-w-[560px] text-zinc-50">
-                  Na Amplitude A, unimos produção de eventos e comunicação
-                  estratégica para emocionar e conectar pessoas.
-                </p>
               </div>
             </div>
-          </div>
-
-          <div className="flex flex-col gap-4 w-full pt-16">
-            <iframe
-              className="w-full "
-              src="https://open.spotify.com/embed/playlist/04hXF6sz77Na3WsOIkBj3Y?utm_source=generator&theme=0"
-              height="360"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-            ></iframe>
+            <div className="flex flex-col gap-4 w-full pt-16">
+              <iframe
+                className="max-w-[840px] "
+                src="https://open.spotify.com/embed/playlist/04hXF6sz77Na3WsOIkBj3Y?utm_source=generator&theme=0"
+                height="360"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -174,15 +173,24 @@ export default function HomePage() {
               Quer ser um Artista Amplitude A ou Organizar um Evento?
             </h2>
             <form className="space-y-4">
-              <Input type="text" placeholder="Nome" />
-              <Input type="tel" placeholder="Telefone" />
-              <Input type="email" placeholder="E-mail" />
-              <div className="flex items-center space-x-4">
+              <div className="grid w-full max-w-sm items-center gap-1.5">
+                <Label htmlFor="picture" className="text-xs font-regular text-zinc-500">Nome</Label>
+                <Input />
+              </div>
+              <div className="grid w-full max-w-sm items-center gap-1.5">
+                <Label htmlFor="picture" className="text-xs font-regular text-zinc-500">Telefone</Label>
+                <Input />
+              </div>
+              <div className="grid w-full max-w-sm items-center gap-1.5">
+                <Label htmlFor="picture" className="text-xs font-regular text-zinc-500">E-mail</Label>
+                <Input />
+              </div>
+              {/* <div className="flex items-center space-x-4">
                 <input type="checkbox" id="artist" />
                 <label htmlFor="artist">Ser um Artista do Casting</label>
                 <input type="checkbox" id="event" />
                 <label htmlFor="event">Organizar um Evento</label>
-              </div>
+              </div> */}
               <Button type="submit">Enviar</Button>
             </form>
           </div>
