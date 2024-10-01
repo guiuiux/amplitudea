@@ -2,12 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* Card hover */
+
+
 body {
   font-family: var(--font-inter), sans-serif;
 }
 
 h1,h2,h3,h4{
   font-family: var(--font-syne), sans-serif;
+}
+
+.syne-font{
+  font-family: var(--font-syne), sans-serif;
+}
+.inter-font{
+  font-family: var(--font-inter), sans-serif;
 }
 
 .hero-video {
@@ -24,6 +35,22 @@ h1,h2,h3,h4{
 
   background-image: radial-gradient(rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 1) 1px);
   background-size: 3px 3px;
+}
+
+.pulse-shadow {
+  animation: shadowpulse 1s ease-in-out infinite;
+}
+
+@keyframes shadowpulse {
+  0% {
+    box-shadow: 0 0 10px .5px rgba(135, 89, 242, .5);
+  }
+  50% {
+    box-shadow: 0 0 30px 2px rgba(152, 113, 241,1);
+  }
+  100% {
+    box-shadow: 0 0 10px .5px rgba(135, 89, 242, .5);
+  }
 }
 
 
