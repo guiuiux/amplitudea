@@ -11,29 +11,30 @@ const config: Config = {
   	extend: {
   		colors: {
 			ampyellow: {
-				50: '#FFF7E1',
-				100: '#FEEAB8',
-				200: '#FDD880',
-				300: '#FDC82B', // base color
-				400: '#E6B123',
-				500: '#C7901E',
-				600: '#A76F18',
-				700: '#874F12',
-				800: '#67400C',
-				900: '#47300A',
-			  },
-			  amppurple: {
-				50: '#F2ECFC',
-				100: '#E2D2FA',
-				200: '#C8A9F6',
-				300: '#A977F3',
-				400: '#8759F2', // base color
-				500: '#6D45CF',
-				600: '#5636A7',
-				700: '#422780',
-				800: '#311C5E',
-				900: '#221241',
-			  },
+				50: '#FFEDE0',
+				100: '#FFDBB3',
+				200: '#FFB87A',
+				300: '#FF6700', // base color
+				400: '#E65E00',
+				500: '#C74F00',
+				600: '#A63F00',
+				700: '#863000',
+				800: '#662200',
+				900: '#461500',
+			},
+			amppurple: {
+				50: '#F6E4F7',
+				100: '#E6C1F0',
+				200: '#D28BE8',
+				300: '#B754E0', // Updated base color to match with orange
+				400: '#9E38CF',
+				500: '#7F2DB4',
+				600: '#64238F',
+				700: '#4B1A6C',
+				800: '#35114B',
+				900: '#240B33',
+			},
+			
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

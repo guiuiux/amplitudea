@@ -9,7 +9,7 @@ const Header = () => {
     <header className="fixed flex px-6 top-0 left-0 w-full bg-zinc-600/30 backdrop-blur-[6px] z-50 h-[64px] text-black border-b-zinc-500 border-b-[1px]">
       <nav className="container mx-auto flex justify-between max-w-[1080px] items-center">
         <Link href="/" className="hover:underline font-light">
-        <Image src="./img/logo.png" height={40} width={40} alt="Logo amplitude" />
+        <Image src="/img/logo.png" height={40} width={40} alt="Logo amplitude" />
           </Link>
         
         <div className="hidden text-zinc-50 md:flex md:gap-4 font-medium space-x-4">

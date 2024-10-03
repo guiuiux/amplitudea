@@ -3,7 +3,29 @@
 @tailwind utilities;
 
 
-/* Card hover */
+/* Masonry grid */
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -30px; /* Adjusts spacing */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* Adjusts spacing */
+  background-clip: padding-box;
+}
+
+.image-item {
+  margin-bottom: 30px;
+}
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
 
 
 body {

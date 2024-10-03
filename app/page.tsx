@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { ArtistCard } from "@/components/ArtistCard";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import EventosTeaser from "@/components/Events";
 
 interface Artist {
   title: string;
@@ -165,8 +166,9 @@ export default function HomePage() {
                 variants={heroItemVariants}
               >
                 Producão de shows e eventos, consultoria para artistas,
-                Planejamento de mídia e assessoria de imprensa. Amplie seus
+                planejamento de mídia e assessoria de imprensa. Amplie seus
                 horizontes contrate a Amplitude A.
+
               </motion.p>
             </div>
 
@@ -179,7 +181,7 @@ export default function HomePage() {
                 variant="default"
                 className="bg-amppurple-500 pulse-shadow border-amppurple-300 border-[1px] hover:bg-amppurple-500 active:bg-amppurple-400 rounded-xl font-normal py-6 px-8"
               >
-                Quero um evento
+                Quero contratar a Amplitude A
               </Button>
             </motion.div>
           </div>
@@ -203,7 +205,9 @@ export default function HomePage() {
 
       {/* Artists Section */}
       <section className="py-16 bg-zinc-50 text-black">
+       
         <div className="container max-w-[1080px] mx-auto px-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          
           {artists.map((artist) => (
             <motion.div
               key={artist.title}
@@ -270,13 +274,7 @@ export default function HomePage() {
           </div>
         </div>
       </motion.section>
-
-      {/* Events Section */}
-      <section className="py-16 bg-gray-100"></section>
-
-      {/* Contact Form */}
-      <section className="py-16 bg-white"></section>
-
+      <EventosTeaser />
       {/* Footer */}
       <Footer />
     </div>

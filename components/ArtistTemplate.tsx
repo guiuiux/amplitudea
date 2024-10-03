@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import spotifyIcon from "/public/img/icons/spotify.svg";
 import instagramIcon from "/public/img/icons/instagram.svg";
 import youtubeIcon from "/public/img/icons/youtube.svg";
+import EventosTeaser from "./Events";
 interface SocialLinks {
   instagram: string;
   spotify: string;
@@ -99,7 +100,7 @@ export default function ArtistTemplate({ artist }: ArtistTemplateProps) {
           </Link>
         </div>
       </section>
-
+      <EventosTeaser />
       {/* Use Footer Component */}
       <Footer />
     </div>
