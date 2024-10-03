@@ -31,9 +31,9 @@ export function ArtistCard({
           className="syne-font"
           src={image}
           alt={title}
+          quality={100}
           width={360}
           height={360}
-          layout="responsive"
         />
         {variant === "exclusive" ? (
           <p className="pt-2 text-lg flex font-bold syne-font justify-between items-center w-full ">

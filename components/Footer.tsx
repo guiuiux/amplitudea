@@ -4,6 +4,7 @@ import Link from "next/link";
 const Footer = () => {
     return (
       <footer className="bg-purple-800 text-white py-8">
+        <div className="bg-zinc-950 flex flex-col"></div>
         <div className="container justify-center flex gap-4 mx-auto px-4">
           <p className="text-sm">&copy; 2024 Amplitude A Produções - Todos os direitos reservados</p>
           <p className="text-sm font-light text-amppurple-200">Desenvolvido por <Link

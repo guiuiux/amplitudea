@@ -1,13 +1,10 @@
 "use client"; // Ensure the entire file is client-rendered for animations
-
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArtistCard } from "@/components/ArtistCard";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 interface Artist {
   title: string;
@@ -23,41 +20,41 @@ export default function HomePage() {
     // Artistas Exclusivos
     {
       title: "Banda Resgate",
-      image: "/img/artistas/resgate/main.jpg",
+      image: "./img/artistas/resgate/main.jpg",
       variant: "exclusive",
     },
     {
       title: "Kemuel",
-      image: "/img/artistas/kemuel/main.jpg",
+      image: "./img/artistas/kemuel/main.jpg",
       variant: "exclusive",
     },
     {
       title: "Soul Livre",
-      image: "/img/artistas/soul-livre/main.jpg",
+      image: "./img/artistas/soul-livre/main.jpg",
       variant: "exclusive",
     },
 
     // Exclusivos Prefeitura
     {
       title: "Vocal Livre",
-      image: "/img/artistas/vocal-livre/main.jpg",
+      image: "./img/artistas/vocal-livre/main.jpg",
       variant: "default",
     },
     {
       title: "Athus",
-      image: "/img/artistas/athus/main.jpg",
+      image: "./img/artistas/athus/main.jpg",
       variant: "default",
     },
     {
       title: "Pedro Valença",
-      image: "/img/artistas/pedro-valenca/main.jpg",
+      image: "./img/artistas/pedro-valenca/main.jpg",
       variant: "default",
     },
 
     // Parceiros
     {
       title: "Daniela Araújo",
-      image: "/img/artistas/daniela-araujo/main.jpg",
+      image: "./img/artistas/daniela-araujo/main.jpg",
       variant: "partner",
     },
     {
@@ -86,7 +83,7 @@ export default function HomePage() {
       variant: "partner",
     },
     {
-      title: "Ana Nobrega",
+      title: "Ana Nóbrega",
       image: "/img/artistas/ana-nobrega/main.jpg",
       variant: "partner",
     },
@@ -275,100 +272,13 @@ export default function HomePage() {
       </motion.section>
 
       {/* Events Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Eventos</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {["Event 1", "Event 2", "Event 3"].map((event) => (
-              <div
-                key={event}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
-              >
-                <div className="h-48 bg-gray-300"></div>
-                <div className="p-4">
-                  <h3 className="font-bold mb-2">{event}</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                  <Button className="mt-4">Saiba Mais</Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="py-16 bg-gray-100"></section>
 
       {/* Contact Form */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-8 md:mb-0">
-            <Image
-              src="/placeholder.svg"
-              alt="Contact"
-              width={400}
-              height={400}
-            />
-          </div>
-          <div className="md:w-1/2 md:pl-8">
-            <h2 className="text-3xl font-bold mb-4">
-              Quer Organizar um Evento com a Amplitude A?
-            </h2>
-            <form className="space-y-4">
-              <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label
-                  htmlFor="picture"
-                  className="text-xs font-regular text-zinc-500"
-                >
-                  Nome
-                </Label>
-                <Input />
-              </div>
-              <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label
-                  htmlFor="picture"
-                  className="text-xs font-regular text-zinc-500"
-                >
-                  Telefone
-                </Label>
-                <Input />
-              </div>
-              <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label
-                  htmlFor="picture"
-                  className="text-xs font-regular text-zinc-500"
-                >
-                  E-mail
-                </Label>
-                <Input />
-              </div>
-              {/* <div className="flex items-center space-x-4">
-                <input type="checkbox" id="artist" />
-                <label htmlFor="artist">Ser um Artista do Casting</label>
-                <input type="checkbox" id="event" />
-                <label htmlFor="event">Organizar um Evento</label>
-              </div> */}
-              <Button type="submit">Enviar</Button>
-            </form>
-          </div>
-        </div>
-      </section>
+      <section className="py-16 bg-white"></section>
 
       {/* Footer */}
-      <footer className="bg-purple-800 text-white py-8">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-4 text-center">
-            Eventos Realizados
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="h-32 bg-purple-700 rounded-lg"></div>
-            ))}
-          </div>
-          <p className="mt-8 text-center">
-            &copy; 2024 Amplitude A Produções - Todos os direitos reservados
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
