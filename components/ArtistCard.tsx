@@ -32,7 +32,7 @@ export function ArtistCard({
           src={image}
           alt={title}
           quality={100}
-          width={360}
+          width={640}
           height={360}
         />
         {variant === "exclusive" ? (

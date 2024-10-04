@@ -5,6 +5,10 @@
 
 /* Masonry grid */
 
+html {
+  scroll-behavior: smooth;
+}
+
 .my-masonry-grid {
   display: flex;
   margin-left: -30px; /* Adjusts spacing */

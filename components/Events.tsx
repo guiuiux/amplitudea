@@ -29,7 +29,7 @@ export default function EventosTeaser() {
                 alt={`Evento ${index + 1}`}
                 layout="fill"
                 objectFit="cover"
-                className="hover:scale-110 transition-transform duration-300 ease-in-out"
+                className="hover:scale-110 cover transition-transform duration-300 ease-in-out"
               />
             </div>
           ))}

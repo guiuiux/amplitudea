@@ -47,7 +47,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-      <div className="w-full bg-amppurple-500 justify-center flex gap-4 mx-auto px-4">
+      <div className="w-full bg-amppurple-500 justify-center flex-col text-center sm:text-left sm:flex-row flex gap-4 mx-auto px-4">
         <p className="text-sm">
           &copy; 2024 Amplitude A Produções - Todos os direitos reservados
         </p>
