@@ -9,17 +9,17 @@ import Footer from "@/components/Footer";
 import BreadcrumbDropdown from "@/components/BreadcrumbDropdown";
 
 const allEventImages = [
-  "/img/gallery/image1.jpg",
-  "/img/gallery/image2.jpg",
-  "/img/gallery/image3.jpg",
-  "/img/gallery/image4.jpg",
-  "/img/gallery/image5.jpg",
-  "/img/gallery/image6.jpg",
-  "/img/gallery/image7.jpg",
-  "/img/gallery/image8.jpg",
-  "/img/gallery/image9.jpg",
-  "/img/gallery/image10.jpg",
-  "/img/gallery/image11.jpg",
+  "./img/gallery/image1.jpg",
+  "./img/gallery/image2.jpg",
+  "./img/gallery/image3.jpg",
+  "./img/gallery/image4.jpg",
+  "./img/gallery/image5.jpg",
+  "./img/gallery/image6.jpg",
+  "./img/gallery/image7.jpg",
+  "./img/gallery/image8.jpg",
+  "./img/gallery/image9.jpg",
+  "./img/gallery/image10.jpg",
+  "./img/gallery/image11.jpg",
 ];
 
 export default function EventosPage() {

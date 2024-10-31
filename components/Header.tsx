@@ -14,14 +14,14 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full bg-zinc-950/70 backdrop-blur-[6px] z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full bg-ampyellow-300 backdrop-blur-[6px] z-50 transition-all duration-300 ${
         menuOpen ? 'h-[250px]' : 'h-[64px]'
-      } text-black border-b-zinc-800 border-b-[1px]`}
+      } text-black`}
     >
       <nav className="container mx-auto flex justify-between items-center h-[64px] max-w-[1080px] px-6">
         {/* Logo */}
         <Link href="/" className="hover:underline font-light">
-          <Image src="/img/logo.png" height={40} width={40} alt="Logo amplitude" />
+          <Image src="./img/logo.png" height={40} width={40} alt="Logo amplitude" />
         </Link>
 
         {/* Desktop Links */}
