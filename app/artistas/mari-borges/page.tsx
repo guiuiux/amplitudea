@@ -17,7 +17,5 @@ const artist = {
 };
 
 export default function ArtistPage() {
-  return (
-   <ArtistTemplate artist={artist} />
-  );
+  return <ArtistTemplate artist={artist} />;
 }

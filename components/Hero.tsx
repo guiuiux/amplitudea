@@ -25,10 +25,10 @@ const artists = [
   },
   {
     name: "Gabi Sampaio",
-    song: "Eu Sei Que Vem",
+    song: "Toda Adoração",
     description: "Gabi Sampaio comove com sua entrega e vocal impactante.",
     image: "/img/artistas/gabi-sampaio",
-    videoLink: "https://www.youtube.com/channel/UCd6uS6dAHvNsn0FLO_GLJkA",
+    videoLink: "https://www.youtube.com/watch?v=ujfgZxJeC40",
   },
   {
     name: "Vocal Livre",
@@ -39,7 +39,7 @@ const artists = [
   },
   {
     name: "Daniela Araújo",
-    song: "Santo Espírito",
+    song: "Flutuar",
     description: "Daniela Araújo mistura adoração e autenticidade.",
     image: "/img/artistas/daniela-araujo",
     videoLink: "https://www.youtube.com/watch?v=FsjQSL6wWW4",
@@ -106,7 +106,16 @@ export default function ArtistCarousel() {
               <p className="max-w-xl mb-6">{currentArtist.description}</p>
               <div className="flex flex-wrap gap-4">
                 <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-                  Quero Contratar
+                  <Link
+                    href={`https://wa.me/5511981480911?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20contratar%20um%20show%20com%20${encodeURIComponent(
+                      currentArtist.name
+                    )}.`}
+                    aria-label={`Contrate um show com ${currentArtist.name}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Quero Contratar
+                  </Link>
                 </Button>
                 <Link
                   href={currentArtist.videoLink}

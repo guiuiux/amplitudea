@@ -1,76 +1,80 @@
 "use client";
 
-import Masonry from "react-masonry-css";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Masonry from "react-masonry-css";
 import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BreadcrumbDropdown from "@/components/BreadcrumbDropdown";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const allEventImages = [
-  "./img/gallery/image1.jpg",
-  "./img/gallery/image2.jpg",
-  "./img/gallery/image3.jpg",
-  "./img/gallery/image4.jpg",
-  "./img/gallery/image5.jpg",
-  "./img/gallery/image6.jpg",
-  "./img/gallery/image7.jpg",
-  "./img/gallery/image8.jpg",
-  "./img/gallery/image9.jpg",
-  "./img/gallery/image10.jpg",
-  "./img/gallery/image11.jpg",
+  "./img/gallery/image01.webp",
+  "./img/gallery/image02.webp",
+  "./img/gallery/image03.webp",
+  "./img/gallery/image04.webp",
+  "./img/gallery/image05.webp",
+  "./img/gallery/image06.webp",
+  "./img/gallery/image07.webp",
+  "./img/gallery/image08.webp",
+  "./img/gallery/image09.webp",
+  "./img/gallery/image10.webp",
+  "./img/gallery/image11.webp",
+  "./img/gallery/image12.webp",
+  "./img/gallery/image13.webp",
+  "./img/gallery/image14.webp",
+  "./img/gallery/image15.webp",
+  "./img/gallery/image16.webp",
+  "./img/gallery/image17.webp",
+  "./img/gallery/image18.webp",
+  "./img/gallery/image19.webp",
+  "./img/gallery/image20.webp",
+  "./img/gallery/image21.webp",
+  "./img/gallery/image22.webp",
 ];
 
 export default function EventosPage() {
-  const [images, setImages] = useState(allEventImages.slice(0, 5)); // Start with 5 images
+  const [images, setImages] = useState(allEventImages.slice(0, 6)); // Start with 6 images
   const [loadingMore, setLoadingMore] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
   const [breakpointColumns, setBreakpointColumns] = useState(3);
 
-  // Function to open the image in zoom mode
   const handleZoomImage = (src: string) => {
-    if (breakpointColumns > 1) {
-      setCurrentImage(src);
-      setIsZoomed(true);
-    }
+    setCurrentImage(src);
+    setIsZoomed(true);
   };
 
-  // Function to close the zoomed image
   const closeZoom = () => {
     setIsZoomed(false);
   };
 
-  // Load more images when the user clicks the button
   const loadMoreImages = () => {
     setLoadingMore(true);
     setTimeout(() => {
-      const moreImages = allEventImages.slice(
-        images.length,
-        images.length + 10
-      ); // Load 10 more images
+      const moreImages = allEventImages.slice(images.length, images.length + 6);
       setImages((prevImages) => [...prevImages, ...moreImages]);
       setLoadingMore(false);
-    }, 1500);
+    }, 1000);
   };
 
-  // Detect if user reached the bottom of the page to load more automatically
   useEffect(() => {
     const handleScroll = () => {
       if (
         window.innerHeight + window.scrollY >=
           document.body.offsetHeight - 500 &&
-        !loadingMore
+        !loadingMore &&
+        images.length < allEventImages.length
       ) {
         loadMoreImages();
       }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [loadingMore]);
+  });
 
-  // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (isZoomed) {
@@ -95,14 +99,13 @@ export default function EventosPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isZoomed, images]);
 
-  // Masonry breakpoints for responsiveness
   const breakpointColumnsObj = {
     default: 3,
+    current: breakpointColumns,
     1100: 2,
     700: 1,
   };
 
-  // Update column count when layout changes
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -116,80 +119,100 @@ export default function EventosPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-amppurple-900 to-ampyellow-900 text-white">
       <Header />
-      <section className="py-16">
-        <div className="container max-w-[1080px] mx-auto px-6">
+      <section className="py-20">
+        <div className="container max-w-[1200px] mx-auto px-6">
           <BreadcrumbDropdown currentArtistName="Eventos" />
-          <h2 className="text-3xl font-bold mb-8">Galeria de Eventos</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center text-ampyellow-100">
+            Galeria de Eventos
+          </h2>
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
             {images.map((src, index) => (
-              <div
-                key={index}
-                className={`mb-4 transition-transform duration-300 cursor-pointer ${
-                  breakpointColumns > 1 ? "hover:scale-105" : ""
-                }`}
+              <motion.div
+                key={src}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="mb-4 overflow-hidden rounded-lg transition-all duration-300 ease-in-out cursor-zoom-in"
                 onClick={() => handleZoomImage(src)}
               >
                 <Image
                   src={src}
                   alt={`Evento ${index + 1}`}
-                  width={1080}
-                  height={1080}
-                  className="rounded-lg opacity-1 animate-fade-in transition-opacity duration-300"
+                  layout="responsive"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover transform hover:scale-110 transition-transform duration-300"
                 />
-              </div>
+              </motion.div>
             ))}
           </Masonry>
-          <div className="text-center mt-8">
-            <button
-              onClick={loadMoreImages}
-              className="bg-amppurple-500 hover:bg-amppurple-600 text-white py-3 px-6 rounded-lg font-medium"
-              disabled={loadingMore}
-            >
-              {loadingMore ? "Carregando..." : "Carregar mais"}
-            </button>
-          </div>
+
+          {images.length < allEventImages.length && (
+            <div className="text-center mt-12">
+              <button
+                onClick={loadMoreImages}
+                className="bg-ampyellow-400 hover:bg-ampyellow-300 text-white py-3 px-8 rounded-full font-bold text-lg transition-colors duration-300 transform hover:scale-105"
+                disabled={loadingMore}
+              >
+                {loadingMore ? "Carregando..." : "Carregar mais"}
+              </button>
+            </div>
+          )}
           {images.length >= allEventImages.length && (
-            <div className="text-center mt-4 text-zinc-500">
+            <div className="text-center mt-8 text-ampyellow-100 font-medium">
               Você chegou ao fim da galeria!
             </div>
           )}
         </div>
       </section>
-      {/* Zoomed Image Modal */}
       <Dialog open={isZoomed} onOpenChange={closeZoom}>
-        <DialogOverlay className="fixed bg-black/50 backdrop-blur-sm" />
-        <DialogContent className="flex flex-col h-[90vh] items-center w-full fixed bg-transparent border-0 p-4">
-          <Image
-            src={currentImage}
-            alt="Zoomed Image"
-            width={1080}
-            height={1080}
-            className="rounded-lg object-contain w-full max-h-[80vh]"
-          />
+        <DialogOverlay className="fixed inset-0 bg-black/70 backdrop-blur-md transition-opacity duration-300" />
+        <DialogContent className="fixed inset-0 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className="relative max-w-4xl w-full"
+          >
+            <Image
+              src={currentImage}
+              alt="Zoomed Image"
+              width={1200}
+              height={1200}
+              className="rounded-lg object-contain w-full max-h-[90vh] transform transition-transform duration-300 ease-in-out hover:scale-105"
+            />
+            <Button
+              onClick={closeZoom}
+              className="absolute top-4 right-4 text-white bg-black/60 rounded-full p-2 hover:bg-black/80 transition-colors duration-300 transform hover:scale-110"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </Button>
+          </motion.div>
         </DialogContent>
       </Dialog>
 
       <Footer />
-
-      <style jsx>{`
-        .animate-fade-in {
-          animation: fadeIn 1s forwards;
-        }
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-      `}</style>
     </div>
   );
 }

@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import EventosSection from "@/components/EventsSection";
 import Hero from "@/components/Hero";
+import LatestPosts from "@/components/LatestPosts";
+import AboutUs from "@/components/AboutUs";
 // import UpcomingEvents from "@/components/UpcomingEvents";
 
 interface Artist {
@@ -134,9 +136,7 @@ export default function HomePage() {
           className="flex flex-col gap-4 w-full"
           variants={heroItemVariants}
         >
-          <p className="text-zinc-950 text-center text-xl">
-            Ouça nossos artistas
-          </p>
+          <p className="text-zinc-500 mt-2 text-xl">Ouça nossos artistas</p>
           <iframe
             className="w-full"
             src="https://open.spotify.com/embed/playlist/1ry7uOhYTMTTOskODEVYoR?utm_source=generator&theme=0"
@@ -172,85 +172,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="quem-somos" className="py-16 bg-zinc-50 text-black">
-        <div className="container max-w-[1080px] mx-auto px-6 grid gap-12 sm:grid-cols-2 lg:grid-cols-3 text-center">
-          {[
-            {
-              icon: "🎤",
-              title: "Mais de 24 anos de experiência",
-              text: "Produção e organização de grandes shows e eventos",
-            },
-            {
-              icon: "🎸",
-              title: "Gerenciamento de carreira de artistas",
-              text: "Apoiando o desenvolvimento de carreiras de sucesso",
-            },
-            {
-              icon: "🛠️",
-              title: "Serviços",
-              text: (
-                <div className="text-zinc-600 mt-2">
-                  <ul className="list-none">
-                    <li>Organização de eventos</li>
-                    <li>Produção de conteúdos audiovisuais</li>
-                    <li>Gerenciamento de carreira</li>
-                    <li>Coordenação de palco</li>
-                    <li>Consultoria artística</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              icon: "🎯",
-              title: "Missão",
-              text: "Produzir ideias que encantam e agregam valor à marca do cliente",
-            },
-            {
-              icon: "📜",
-              title: "Valores",
-              text: (
-                <div className="text-zinc-600 mt-2">
-                  <ul className="list-none">
-                    <li>Entrega extraordinária</li>
-                    <li>Verdade</li>
-                    <li>Honestidade</li>
-                    <li>Profissionalismo</li>
-                  </ul>
-                </div>
-              ),
-            },
-            {
-              icon: "🌟",
-              title: "Diferencial",
-              text: "Experiência em comunicação, gestão de pessoas e produção de eventos",
-            },
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              className="border-2 p-6 border-ampyellow-200 rounded-2xl flex flex-col items-center justify-center"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.2,
-              }}
-              viewport={{ once: true }}
-            >
-              <div className="icon text-6xl mb-4 text-amppurple-500">
-                {item.icon}
-              </div>
-              <h3 className="text-2xl font-semibold">{item.title}</h3>
-              {typeof item.text === "string" ? (
-                <p className="text-zinc-600 mt-2">{item.text}</p>
-              ) : (
-                item.text
-              )}
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <AboutUs />
 
       <EventosSection />
+      <LatestPosts />
       {/* Footer */}
       <Footer />
     </div>

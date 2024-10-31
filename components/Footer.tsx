@@ -3,15 +3,11 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import whatsappIcon from "/public/img/icons/whatsapp.svg";
 
-
 // components/Footer.tsx
 const Footer = () => {
-
-
   return (
     <footer className="bg-amppurple-500 text-white pb-8">
       <div className="w-full bg-black items-center mb-8 pb-8 flex flex-col">
-        
         <Image
           src="./img/logo.png"
           height={10}
@@ -25,24 +21,29 @@ const Footer = () => {
             href="https://wa.me/5511981480911?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20contratar%20um%20artista."
             aria-label="Contrate um artista pelo nosso Whatsapp"
           >
-            <Button variant='outline' className="hidden md:flex md:flex-row gap-1 bg-transparent hover:bg-transparent border-ampyellow-500 hover:border-ampyellow-900 active:border-ampyellow-800 text-zinc-300 duration-300 hover:text-zinc-50">
+            <Button
+              variant="outline"
+              className="hidden md:flex md:flex-row gap-1 bg-transparent hover:bg-transparent border-ampyellow-500 hover:border-ampyellow-900 active:border-ampyellow-800 text-zinc-300 duration-300 hover:text-zinc-50"
+            >
               <Image
                 priority
                 height={14}
                 src={whatsappIcon}
                 alt="Fale com a gente pelo Whatsapp"
-              />(11) 98148-0911
-              
+              />
+              (11) 98148-0911
             </Button>
           </Link>
           <Link
             href="mailto:contato@amplitudea.com.br"
             aria-label="Contrate um artista pelo nosso Whatsapp"
           >
-            <Button variant='outline' className="hidden md:flex md:flex-row gap-1 bg-transparent hover:bg-transparent border-amppurple-500 hover:border-amppurple-800 active:border-amppurple-500 text-zinc-300 duration-300 hover:text-zinc-50">
-            <span className="material-symbols-outlined text-base">
-                mail
-              </span> contato@amplitudea.com.br
+            <Button
+              variant="outline"
+              className="hidden md:flex md:flex-row gap-1 bg-transparent hover:bg-transparent border-amppurple-500 hover:border-amppurple-800 active:border-amppurple-500 text-zinc-300 duration-300 hover:text-zinc-50"
+            >
+              <span className="material-symbols-outlined text-base">mail</span>{" "}
+              contato@amplitudea.com.br
             </Button>
           </Link>
         </div>

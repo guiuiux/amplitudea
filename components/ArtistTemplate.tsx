@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 import spotifyIcon from "/public/img/icons/spotify.svg";
 import instagramIcon from "/public/img/icons/instagram.svg";
 import youtubeIcon from "/public/img/icons/youtube.svg";
-import EventosTeaser from "./Events";
+
 interface SocialLinks {
   instagram: string;
   spotify: string;
@@ -47,7 +47,9 @@ export default function ArtistTemplate({ artist }: ArtistTemplateProps) {
             className="rounded-2xl mb-6"
           />
 
-          <h1 className="text-4xl md:text-6xl font-semibold mb-4">{artist.name}</h1>
+          <h1 className="text-4xl md:text-6xl font-semibold mb-4">
+            {artist.name}
+          </h1>
 
           {/* Social Media Links */}
           <div className="flex gap-4 mb-8">
@@ -86,7 +88,9 @@ export default function ArtistTemplate({ artist }: ArtistTemplateProps) {
 
           {/* CTA Button */}
           <Link
-            href={`https://wa.me/5511981480911?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20contratar%20um%20show%20com%20${encodeURIComponent(artist.name)}.`}
+            href={`https://wa.me/5511981480911?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20contratar%20um%20show%20com%20${encodeURIComponent(
+              artist.name
+            )}.`}
             aria-label={`Contrate um show com ${artist.name}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -100,7 +104,7 @@ export default function ArtistTemplate({ artist }: ArtistTemplateProps) {
           </Link>
         </div>
       </section>
-      <EventosTeaser />
+
       {/* Use Footer Component */}
       <Footer />
     </div>

@@ -34,7 +34,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
     updateImageSrc(); // Set initial image source based on current window width
     window.addEventListener("resize", updateImageSrc);
     return () => window.removeEventListener("resize", updateImageSrc);
-  }, []);
+  });
 
   return (
     <Image
